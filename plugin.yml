@@ -1,0 +1,5 @@
+name: "HotStreak"
+main: "net.kdehner.HotStreak.HotStreakMain"
+version: "0.1"
+description: "Rewards player for high kill streaks"
+author: "Kevin Dehner (Kdehner)"
