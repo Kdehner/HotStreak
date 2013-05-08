@@ -1,5 +1,7 @@
 package net.kdehner.HotStreak;
 
-public class HotStreakCommandExecutor {
+import org.bukkit.command.CommandExecutor;
+
+public class HotStreakCommandExecutor implements CommandExecutor {
 
 }

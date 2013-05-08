@@ -1,7 +1,9 @@
 package net.kdehner.HotStreak;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,7 +21,7 @@ public class HotStreakConfigManager {
 		log = plugin.getLogger();
 	}
 	
-	//Loads the secondary config file.
+	//Loads the secondary config file
 	public FileConfiguration loadConfig(String fileName) {
 		File file = new File(plugin.getDataFolder(), fileName);
 		FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
@@ -31,6 +33,28 @@ public class HotStreakConfigManager {
 			fileConfiguration.setDefaults(defConfig);
 		}
 		return fileConfiguration;
+	}
+	
+	//Saves the secondary config file
+	public void SaveConfig(String filename, FileConfiguration fileConfiguration) {
+		File file = new File(plugin.getDataFolder(), filename);
+		if (fileConfiguration == null || file == null) {
+			return;
+		} else {
+			try {
+				fileConfiguration.save(file);
+			} catch (IOException ex) {
+				log.log(Level.SEVERE, "Could not save config to "+file);
+			}
+		}
+	}
+	
+	//Save default secondary config
+	public void saveDefaultConfig(String fileName) {
+		File file = new File(plugin.getDataFolder(), fileName);
+		if (!file.exists()) {
+			this.plugin.saveResource(fileName, false);
+		}
 	}
 
 }
