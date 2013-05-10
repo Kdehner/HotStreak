@@ -1,5 +1,6 @@
 package net.kdehner.HotStreak;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class HotStreakManager {
@@ -9,6 +10,7 @@ public class HotStreakManager {
 	private static HotStreakConfigManager cfm;
 	private static FileConfiguration config;
 	private static FileConfiguration pdata;
+	private static FileConfiguration lang;
 	
 	//create()
 	//Set the main reference and configuration
@@ -17,6 +19,8 @@ public class HotStreakManager {
 		plugin = pl;
 		config = plugin.getConfig();
 		pdata = cfm.loadConfig("PlayerData.yml");
+		lang = cfm.loadConfig("Language.yml");
+		
 		
 		
 	}
@@ -42,6 +46,23 @@ public class HotStreakManager {
 			return 0;
 		}
 		return config.getInt("PlayerStreaks."+player);
+	}
+	
+	//getPrefix()
+	//get prefix from the config
+	public static String getPrefix() {
+		String message = lang.getString("HotStreak.Prefix")+" ";
+		return parseText(message);
+	}
+	
+	//parseText()
+	//add color to text
+	public static String parseText(String text) {
+		for (ChatColor color : ChatColor.values()) {
+			String code = "&"+color.getChar();
+			text = text.replaceAll(code, color.toString());
+		}
+		return text;
 	}
 
 }

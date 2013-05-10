@@ -8,6 +8,7 @@ public class HotStreakMain extends JavaPlugin {
 	//Configfiles
 	public FileConfiguration config;
 	public FileConfiguration playerdata;
+	public FileConfiguration language;
 	
 	//create pointer for config access
 	public HotStreakConfigManager cfm = new HotStreakConfigManager(this);
@@ -21,9 +22,13 @@ public class HotStreakMain extends JavaPlugin {
 		this.saveDefaultConfig();
 		config = this.getConfig();
 		
-		//Save default playerdata
+		//Save default PlayerData.yml
 		cfm.saveDefaultConfig("PlayerData.yml");
 		playerdata = cfm.loadConfig("PlayerData.yml");
+		
+		//Save default Language.yml
+		cfm.saveDefaultConfig("Language.yml");
+		language = cfm.loadConfig("Language.yml");
 		
 		//Configure the HotStreakManager
 		HotStreakManager.create(this);

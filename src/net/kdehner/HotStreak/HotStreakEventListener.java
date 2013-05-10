@@ -8,6 +8,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class HotStreakEventListener implements Listener {
 	
+	//Prefix for messages
+	private String prefix = HotStreakManager.getPrefix();
+	
 	//variables for plguin
 	private HotStreakMain plugin;
 	private HotStreakConfigManager cfm;
