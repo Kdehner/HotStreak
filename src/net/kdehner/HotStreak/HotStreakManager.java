@@ -64,5 +64,10 @@ public class HotStreakManager {
 		}
 		return text;
 	}
+	
+	public static String getLang(String msg) {
+		String message = lang.getString(msg);
+		return parseText(message);
+	}
 
 }

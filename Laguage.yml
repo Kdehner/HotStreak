@@ -1,8 +1,0 @@
-HotStreak:
-   Prefix: &6[HotStreak]
-   
-   
-Messages:
-
-#Message displayed on death
-ondeath: 

@@ -16,7 +16,7 @@ public class HotStreakEventListener implements Listener {
 	private HotStreakConfigManager cfm;
 	private FileConfiguration config;
 	private FileConfiguration pdata;
-	
+	private FileConfiguration lang;
 	//HotStreakEventListener()
 	//Constructor
 	
@@ -24,6 +24,7 @@ public class HotStreakEventListener implements Listener {
 		plugin = pl;
 		config = plugin.getConfig();
 		pdata = cfm.loadConfig("PlayerData.yml");
+		lang = cfm.loadConfig("Language.yml");
 	}
 	
 	//onQuit()
@@ -39,6 +40,12 @@ public class HotStreakEventListener implements Listener {
 	//Called when player dies
 	@EventHandler
 	public void onDeath(PlayerDeathEvent pDeath) {
+		String vic = pDeath.getEntity().getName();
+		HotStreakManager.resetStreak(vic);
+		
+		pDeath.getEntity().sendMessage(prefix+HotStreakManager.getLang("Messages.ondeath"));
+		
+		
 		
 	}
 

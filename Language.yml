@@ -1,0 +1,8 @@
+HotStreak:
+   Prefix: '&6[HotStreak]'
+   
+   
+Messages:
+
+#Message displayed on death
+ondeath: 'Your hot streak has been reset!'
